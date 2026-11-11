@@ -2,9 +2,20 @@ import express from 'express';
 import {createServer} from 'node:http';
 import {WebSocketServer,WebSocket} from 'ws';
 import path from 'node:path';
+import {existsSync} from 'node:fs';
 import {fileURLToPath} from 'node:url';
 const app=express(),server=createServer(app),wss=new WebSocketServer({server,path:'/ws'});
-const root=path.dirname(fileURLToPath(import.meta.url));app.use(express.static(root));app.use(express.json({limit:'8kb'}));
+const root=path.dirname(fileURLToPath(import.meta.url));
+const indexPath=path.join(root,'index.html');
+app.use(express.json({limit:'8kb'}));
+app.get('/',(_req,res)=>{
+  if(!existsSync(indexPath)){
+    console.error('ARQUIVO AUSENTE: index.html na raiz do projeto:',indexPath);
+    return res.status(500).type('text/plain').send('Arquivo index.html nao encontrado na raiz do projeto. Verifique o nome no GitHub.');
+  }
+  res.sendFile(indexPath);
+});
+app.use(express.static(root));
 const username=(process.env.TIKTOK_USERNAME||'').replace(/^@/,'').trim();
 const adminKey=process.env.ADMIN_KEY||'';
 let status='Modo demonstração',connected=false,lastComment='',lastChatAt=null,conn=null,retryTimer=null,connecting=false;

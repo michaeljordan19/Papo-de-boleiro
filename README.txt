@@ -1,0 +1,1 @@
+Substitua os tres arquivos na RAIZ do repositorio GitHub. Nomes exatos: index.html, server.mjs, package.json. Render: npm install / npm start. Se o arquivo index.html nao existir, a rota / mostra mensagem explicativa.
