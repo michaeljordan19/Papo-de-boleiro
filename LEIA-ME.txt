@@ -1,5 +1,0 @@
-CORREÇÃO ZECA VAR - 11/11/2026
-
-No GitHub, coloque index.html, server.mjs e package.json na RAIZ do repositório. Substitua os antigos e faça Commit changes. Aguarde o deploy Live no Render. Abra /api/state para verificar status e / para testar perguntas.
-
-Esta versão consulta /api/state a cada 3 segundos, mesmo quando o WebSocket falha, e envia testes por POST /api/demo. A voz do iPhone pode exigir toque na página.
