@@ -1,31 +1,10 @@
-# VAR Sem Juízo — Comentarista IA LIVE (protótipo 1.0)
+# VAR Sem Juízo — Comentarista IA 3D, versão clean
 
-## Arquivos
-- `index.html`: estúdio 3D original em Three.js, personagem e voz do navegador.
-- `server.mjs`: servidor Express/WebSocket, fila de comentários, IA opcional, TikTok LIVE.
-- `package.json`: dependências.
+## Atualização
+- Personagem de corpo inteiro com uniforme amarelo, calção azul, meiões brancos e chuteiras.
+- Estúdio sem bancada, layout limpo.
+- Quando não houver atividade por aproximadamente 35 segundos, o apresentador inicia uma pauta automática. Não simula mensagens reais de espectadores.
+- Perguntas reais e testes têm prioridade; respostas com IA requerem OPENAI_API_KEY.
 
-## GitHub e Render (iPhone)
-1. Crie **novo repositório** no GitHub e envie os três arquivos na raiz.
-2. Render → New → Web Service → selecione o repositório.
-3. Build Command: `npm install`.
-4. Start Command: `npm start`.
-5. Environment: `TIKTOK_USERNAME=varsemjuizo` (sem @); `ADMIN_KEY` uma senha forte. Opcional: `OPENAI_API_KEY` (chave secreta da API), `OPENAI_MODEL=gpt-4o-mini`.
-6. Abra o endereço Render no Safari e teste a caixa de perguntas.
-7. Verifique `https://SEU-ENDERECO.onrender.com/tiktok-status` para status real do TikTok.
-
-## Funcionamento
-- Perguntas do chat entram em fila, com intervalo por usuário para reduzir spam.
-- Comandos `!pergunta texto`, `!fala texto`, `!var texto` ou comentários comuns.
-- Respostas via OpenAI API quando configurada; sem chave, respostas pré-programadas.
-- Presentes ativam aviso visual, sem exigir pagamento para participação.
-- Voz usa `speechSynthesis` no navegador: **no iPhone pode exigir interação na página e o áudio pode não ser capturado na transmissão**.
-- Three.js é carregado por CDN: requer internet.
-
-## Limitações importantes
-- Este é um protótipo funcional para testes, não um sistema de streaming RTMP/OBS.
-- Não inclui áudio de saída para TikTok, captura de tela nem live streaming automático. Essas funções precisam de um pipeline de transmissão separado, possivelmente um computador ou serviço em nuvem.
-- A integração TikTok é não oficial e pode apresentar `UserOfflineError`, mesmo com LIVE aberta; não é garantida.
-- IA pode gerar informações incorretas; não confiar em placares ou notícias atuais sem fonte externa.
-- Nunca coloque `OPENAI_API_KEY` no HTML ou repositório público. API é cobrada à parte.
-- O personagem é original e não copia personagens de desenhos conhecidos.
+## Render
+Substitua os arquivos index.html e server.mjs no mesmo repositório; mantenha package.json. Render: Build `npm install`, Start `npm start`. Configure `TIKTOK_USERNAME=varsemjuizo`. A voz via speechSynthesis depende do Safari e pode exigir um toque para liberar áudio. Não é transmissão de áudio automaticamente para o TikTok.
